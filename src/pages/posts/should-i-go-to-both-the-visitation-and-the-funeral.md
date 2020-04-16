@@ -6,6 +6,8 @@ subtitle: Sometimes it can be difficult to decide whether to go to both the
   family member or a close friend of the family but not the departed? Let's talk
   about it.
 date: 2020-04-16T03:23:18.071Z
+thumb_img_path: /images/visit.jpeg
+content_img_path: visit.jpeg
 excerpt: Sometimes it can be difficult to decide whether to go to both the
   visitation and the funeral. You may have been close to the individual who
   passed but not close to the family or visa versa. What if you are an estranged

@@ -5,6 +5,8 @@ subtitle: You've decided to go to the visitation but you aren't sure what to do
   differently and it can sometimes be hard to determine what's expected of you.
   Let's talk about it.
 date: 2020-04-16T03:20:04.980Z
+thumb_img_path: /images/vist.jpeg
+content_img_path: vist.jpeg
 excerpt: You've decided to go to the visitation but you aren't sure what to do
   when you get there. That's not uncommon. Each and every family grieves
   differently and it can sometimes be hard to determine what's expected of you.
