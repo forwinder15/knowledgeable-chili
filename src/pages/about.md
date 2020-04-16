@@ -1,7 +1,7 @@
 ---
 title: About Me
 subtitle: ''
-img_path: /images/family photo.jpg
+img_path: family photo.jpg
 menus:
   main:
     title: About

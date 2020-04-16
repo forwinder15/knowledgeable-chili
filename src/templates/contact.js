@@ -1,29 +1,43 @@
 import React from 'react';
 import _ from 'lodash';
+import { useStaticQuery, graphql } from "gatsby";
+import Img from "gatsby-image";
 
 import {Layout} from '../components/index';
-import {htmlToReact, safePrefix} from '../utils';
+import {htmlToReact } from '../utils';
 
-export default class Contact extends React.Component {
-    render() {
+export default function Contact(props) {
+
+    const data = useStaticQuery(graphql`
+        query  {
+          file(relativePath: {eq: "contact.jpg"}) {
+            id
+            childImageSharp {
+              fluid(maxWidth: 200, maxHeight: 200) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+        `)
+
+
         return (
-            <Layout {...this.props}>
+            <Layout {...props}>
             <article className="post page post-full">
               <header className="post-header">
-                <h1 className="post-title">{_.get(this.props, 'pageContext.frontmatter.title')}</h1>
+                <h1 className="post-title">{_.get(props, 'pageContext.frontmatter.title')}</h1>
               </header>
-              {_.get(this.props, 'pageContext.frontmatter.subtitle') && 
+              {_.get(props, 'pageContext.frontmatter.subtitle') && 
               <div className="post-subtitle">
-                {htmlToReact(_.get(this.props, 'pageContext.frontmatter.subtitle'))}
+                {htmlToReact(_.get(props, 'pageContext.frontmatter.subtitle'))}
               </div>
               }
-              {_.get(this.props, 'pageContext.frontmatter.img_path') && 
               <div className="post-thumbnail">
-                <img className="thumbnail" src={safePrefix(_.get(this.props, 'pageContext.frontmatter.img_path'))} alt={_.get(this.props, 'pageContext.frontmatter.title')} />
+                <Img className="thumbnail" fluid={data.file.childImageSharp.fluid} alt='Contact us' />
               </div>
-              }
               <div className="post-content">
-                {htmlToReact(_.get(this.props, 'pageContext.html'))}
+                {htmlToReact(_.get(props, 'pageContext.html'))}
                 <form name="contactForm" method="POST" netlifyHoneypot="bot-field" data-netlify="true" id="contact-form"
                   className="contact-form">
                   <p className="screen-reader-text">
@@ -51,4 +65,4 @@ export default class Contact extends React.Component {
             </Layout>
         );
     }
-}
+

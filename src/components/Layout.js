@@ -6,6 +6,7 @@ import { safePrefix } from '../utils';
 import Header from './Header';
 import Subscribe from './Subscribe';
 import Footer from './Footer';
+import Author from './Author';
 
 export default class Body extends React.Component {
   render() {
@@ -14,9 +15,10 @@ export default class Body extends React.Component {
         <Helmet>
           <title>{_.get(this.props, 'pageContext.frontmatter.title') && _.get(this.props, 'pageContext.frontmatter.title') + ' - '}{_.get(this.props, 'pageContext.site.siteMetadata.title')}</title>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initialScale=1.0" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="google" content="notranslate" />
-          <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i%7CPT+Serif:400,700" rel="stylesheet" />
+          <meta name="description" content={_.get(this.props, 'pageContext.frontmatter.subtitle')} />
+          <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i%7CPT+Serif:400,700&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href={safePrefix('assets/css/main.css')} />
           {(_.get(this.props, 'pageContext.frontmatter.template') === 'post') &&
             _.get(this.props, 'pageContext.frontmatter.canonical_url') &&
@@ -29,7 +31,9 @@ export default class Body extends React.Component {
             <main id="main" className="site-main inner">
               {this.props.children}
             </main>
+
           </div>
+          <Author {...this.props} />
           {_.get(this.props, 'pageContext.site.data.subscribe.enabled') &&
             <Subscribe {...this.props} />
           }

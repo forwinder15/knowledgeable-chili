@@ -10,6 +10,7 @@ module.exports = {
         },
         `gatsby-plugin-react-helmet`,
         `gatsby-source-data`,
+        `gatsby-plugin-sitemap`,
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -18,16 +19,42 @@ module.exports = {
             },
         },
         {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/static/images`,
+            },
+        },
+        `gatsby-transformer-sharp`,
+        {
             resolve: `gatsby-plugin-stackbit-static-sass`,
             options: {
                 inputFile: `${__dirname}/src/sass/main.scss`,
                 outputFile: `${__dirname}/public/assets/css/main.css`
             },
         },
+        `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-transformer-remark`,
             options: {
-                plugins: [`gatsby-remark-component`]
+                plugins: [
+                    `gatsby-remark-relative-images`,
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxwidth: 750,
+                            linkImagesToOriginal: false
+                        }
+                    },
+                ]
+            }
+        },
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    `gatsby-remark-component`,
+                ]
             }
         },
         {
@@ -43,6 +70,7 @@ module.exports = {
                 pageContextProperty: `menus`,
                 menus: require('./src/data/menus.json'),
             }
-        },
+        }
     ]
 };
+
