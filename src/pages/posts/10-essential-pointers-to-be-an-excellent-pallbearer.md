@@ -6,6 +6,8 @@ subtitle: Being a pallbearer is a big responsibility. One that requires some
   here for. We can equip you with the knowledge of how to be an excellent
   pallbearer in honor of your loved one. Let's talk about it.
 date: 2020-04-16T23:27:54.454Z
+thumb_img_path: /images/v.jpeg
+content_img_path: v.jpeg
 excerpt: Being a pallbearer is a big responsibility. One that requires some
   forethought. It's not always easy to know exactly how you should handle
   yourself or what is expected of you in these situations. That's what we are
